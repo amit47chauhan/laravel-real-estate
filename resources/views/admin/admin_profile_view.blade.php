@@ -60,7 +60,9 @@
 
                         <h6 class="card-title">Update Admin Profile</h6>
 
-                        <form class="forms-sample">
+                        <form method="POST" action="{{ route('admin.profile.store') }}"  class="forms-sample" enctype="multipart/form-data">
+                          @csrf
+
                             <div class="mb-3">
                                 <label for="exampleInputUsername1" class="form-label">Username</label>
                                 <input type="text" name='username' class="form-control" id="exampleInputUsername1"
@@ -78,12 +80,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Phone</label>
-                                <input type="text" name='email' class="form-control" id="exampleInputUsername1"
+                                <input type="text" name='phone' class="form-control" id="exampleInputUsername1"
                                     autocomplete="off" value="{{ $profileData->phone }}">
                             </div>
 
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Adrress</label>
+                                <label for="exampleInputPassword1" class="form-label">Address</label>
                                 <input type="text" name='address' class="form-control" id="exampleInputUsername1"
                                     autocomplete="off" value="{{ $profileData->address }}">
                             </div>
@@ -94,6 +96,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label"></label>
+                                
                                 <img class="wd-80 rounded-circle" id="showImage" src="{{ (!empty($profileData->photo)) ? 
                               url('upload/admin_images/.$profileData->photo') : url('upload/no_image.jpg')  
                             }}" alt="profile">
